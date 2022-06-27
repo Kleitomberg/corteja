@@ -1,0 +1,61 @@
+{% extends '../base.html' %}
+
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+<h2 class="hh2 mt-3 text-center"> Agendar horario</h2>
+<form method="post" class="my-class text-light">
+    
+    {% csrf_token %}
+
+    <div class="row justify-content-md-center">
+
+    
+        <div class="d-flex gap-3 text-center">
+      
+        {% for f in funcionarios%}
+    
+            <div class="bg-amber-500 ">       
+            <input name="funcionario" id="{{f.nome}}" class="text-dark" type="checkbox" placeholder="{{f.nome}}" value="{{f.id}}" >
+            {% if f.foto %}
+            <img class="img-fluid" src="{{f.foto.url}}" alt="">
+            {% else %}   
+             {% endif %}
+            <label for="{{f.nome}}">{{f.nome}}</label>
+            </div>
+   
+        {% empty%}
+        <p>Nenhum funcionario disponivel</p>
+        {% endfor%}
+    </div>
+        
+   </div>
+    <div class="row justify-content-md-center">
+
+    <div class="form-group col-md-4 mb-3">
+        {{ form.servico|as_crispy_field }}
+    </div>
+
+    <div class="form-group col-md-4 mb-3">
+        {{ form.data|as_crispy_field }}
+    </div>
+</div>
+<div>
+<button name="logar" value="logar" type="submit" class=" entrar group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+          <!-- Heroicon name: solid/lock-closed -->
+          <svg class="h-6 w-6 text-white-500 group-hover:text-white-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+          </svg>
+        </span>
+        Agendar
+      </button>
+    </div>
+</form>
+</div>
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock %}

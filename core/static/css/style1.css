@@ -72,7 +72,10 @@ h2.redefinir{
 
 
 
-  
+h2.hh2{
+    font-size: 22px;
+    margin-bottom: 45px;
+}
 
 /*MOBILW*/
 @media (min-width: 200px) and (max-width: 425px) {
