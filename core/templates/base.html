@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+       
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'img/favicon/favicon-32x32.png'%}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{%static 'img/favicon/favicon-96x96.png'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'img/favicon/favicon-16x16.png'%}">
+    
+   
+  </head>
+<body class="bg-dark">
+ <!-- NAVbar-->
+    <nav class="navbar navbar-expand-lg bg-dark text-light">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="#"><img class="img-fluid lg" src="{%static 'img/logo.png'%}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02 text-light">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
+              <li class="nav-item text-light text-light">
+                <a class="nav-link active text-light" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">Quem somos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light">Serviços</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light">Agendamento</a>
+              </li>
+              
+    
+           
+        
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">  Bem vindo {{ request.user }}</li>
+            {% else %}
+            <li class="nav-item"><a class="dropdown-item nav-link text-light " href="{% url 'account_login'%}"> <i
+              class="fas fa-sign-out-alt text-light text-gray-900"></i> Logar</a>
+            </li> {% endif %}
+
+            {% if request.user.is_authenticated %}
+            <li class="nav-item text-end"> 
+              <a class=" text-end dropdown-item nav-link text-danger " href="{% url 'account_logout'%}"> <i
+                        class="fas fa-sign-out-alt text-light text-gray-900"></i> Sair</a></li>
+            {%else%}
+            {% endif %}
+          
+          </ul>
+          </div>
+        </div>
+      </nav>
+
+ <!-- MAIN-->
+    {% block content %}
+      
+    {% endblock%}
+
+    <!-- RODAPÉ-->
+    <footer>  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

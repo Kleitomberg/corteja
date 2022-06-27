@@ -1,0 +1,45 @@
+.row.text-light.bg-dark.inicio {
+    align-items: center;
+}
+.text-warning{
+    color:  #fdae3c !important;
+}
+
+.btn-warning{
+    background-color: #fdae3c !important;
+}
+
+.btn-warning:hover{
+    background-color: #fdad3c00 !important;
+    color: #fff;
+}
+
+img.lg{
+    max-width: 10vw !important; 
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color:  #fdae3c !important;
+}
+img.quemsomos{
+   width: 50vw !important; 
+}
+
+p.quem{
+    font-size: 18px;
+    
+}
+
+div.quemss{
+    color: #000 !important;
+    
+}
+div.q p,h2{
+    color: #fff !important;
+    
+}
+
+div.i{
+    background-color: #fdae3c;
+    padding: 10px;
+}

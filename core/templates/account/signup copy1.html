@@ -1,0 +1,106 @@
+
+<script src="https://cdn.tailwindcss.com"></script>
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+
+<style>
+
+.wallpaper{
+  background-image: url(../../static/img/a.jpg);
+  background-size: cover;
+  min-height: 85vh !important;
+  height: 100%;
+  width: 100%;
+  opacity: 0.6;
+  
+}
+
+</style>
+
+{% endblock %}
+
+
+{% block content%}
+
+
+<div class="grid grid-cols-1 lg:grid-cols-2">
+
+    <div class="bg-neutral-900 lg:min-h-screen lg:flex lg:items-center p-8 sm:p-12">
+        <div class="flex-grow">
+    
+          <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md w-full space-y-8">
+              <div>
+                <img class="mx-auto h-20 w-auto" src="{%static 'img/logo.png'%}" alt="">
+      
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-sky-50">Criar uma Conta</h2>
+                
+              </div>
+              <form autocomplete="off" class="mt-8 space-y-6" action="#" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="remember" value="true">
+    
+                <div class="rounded-md shadow-sm -space-y-px">
+                  <div class="mb-3">
+                    <label for="id_login" class="sr-only">Usuario</label>
+                    <input id="id_login" name="login" type="text" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Nome de usuario">
+                  </div>
+    
+                  <div class="mt-2">
+                    <label for="id_password" class="sr-only">Senha</label>
+                    <input id="id_password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Sua senha">
+                  </div>
+                </div>
+          
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <input id="id_remember" name="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                    <label for="id_remember" class="ml-2 block text-sm text-amber-400"> Remember me </label>
+                  </div>
+          <!-- -->
+                  <div class="text-sm">
+                    <a href="#" class="font-medium text-yellow-600 hover:text-yellow-500"> Esqueceu a senha? </a>
+                  </div>
+                </div>
+          
+                <div>
+                  <button name="logar" value="logar" type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                      <!-- Heroicon name: solid/lock-closed -->
+                      <svg class="h-5 w-5 text-white-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                      </svg>
+                    </span>
+                    Entrar
+                  </button>
+                  <div class="text-sm text-center mt-3">
+                    <a href="{% url 'account_login' %}" class="font-medium text-yellow-600 hover:text-yellow-500"> Fazer Login</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+         
+        </div>
+     
+    </div>
+
+
+  <div class="bg-amber-500 lg:min-h-screen lg:flex lg:items-center p-8 sm:p-12">
+      <div class="flex-grow wallpaper">
+       
+      </div>
+   
+  </div>
+
+
+
+</div>
+
+
+
+  
+
+{% endblock %}

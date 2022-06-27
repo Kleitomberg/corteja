@@ -1,0 +1,91 @@
+
+
+  body{
+    --tw-bg-opacity: 1;
+    /*background-color: rgb(23 23 23 / var(--tw-bg-opacity));*/
+  }
+
+.wallpaper{
+  background-image: url(../../static/img/w3.jpg);
+  background-size: cover;
+  height:772px;
+  filter: grayscale(60%);  
+  
+  
+}
+
+.wallpaper-cadastro{
+    background-image: url(../../static/img/w1.jpg);
+    background-size: cover;
+    height:772px;
+    filter: grayscale(40%);  
+    
+    
+  }
+.wallpaper-mudarsenha{
+    background-image: url(../../static/img/w2.jpg);
+    background-size: cover;
+    height:772px;
+    filter: grayscale(40%);  
+    
+    
+  }
+
+  input{
+   
+    border: 3px solid transparent !important;
+}
+
+input:focus {
+    outline: 1 rgb(255, 190, 70) !important;
+    border: 3px solid rgb(255, 190, 70) !important;
+}
+
+button.entrar, button.cadastrar{
+  font-size: 19px;
+}
+
+input#id_login,input#id_password, input#id_email{
+  font-size: 18px;
+}
+
+div.abaixo{
+    font-size: 16px;
+}
+
+p.esqueceu-a-senha{
+    font-size: 18px;
+    text-align: center !important;
+}
+
+span.enviamos-email{
+    font-size: 18px;
+}
+h2.redefinir{
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.h-20 {
+    height: 6rem !important;
+}
+
+
+
+  
+
+/*MOBILW*/
+@media (min-width: 200px) and (max-width: 425px) {
+
+  div.imagem{
+    display: none;
+  }
+  .grid {
+    display: block !important;
+}
+.p-8{
+  padding: 0 !important;
+  padding-inline: 1rem !important;
+}
+
+}
