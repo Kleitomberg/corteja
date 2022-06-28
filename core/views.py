@@ -1,4 +1,5 @@
 import datetime
+import time
 from django.views.generic import ListView
 from time import time
 from django.shortcuts import render
@@ -34,18 +35,29 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
         #polo = objects.all()    
         agendamento = Agendamento(
                                      
-             data=request.POST.get('data'),
+             dia=request.POST.get('dia'),
             
         )
        
         f = request.POST.get('funcionario')
-        print(f' cliquei emmm {f}')
+        ho = request.POST.get('horarios')
+        print(f' cliquei emmm {f} {ho}')
        
         agendamento.cliente = self.request.user
         agendamento.funcionario=Profissional.objects.get(pk=f)
-            
+        h = Horarios.objects.get(pk=ho)
+      
+      
+        print(f'ww///*// meus horarios{h} x {h.horario}')
+        str(h.horario)
+        agendamento.hora=str(h.horario)
         agendamento.servico=Servicos.objects.get(pk=obj['servico'][0])
+        h.ativo = False
+        h.save()
+        print(h.ativo)
         agendamento.save()
+        
+       
         
     
      
