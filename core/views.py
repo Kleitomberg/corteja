@@ -53,4 +53,6 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
         # print(f'idPolo {id_polo}')
         
         context['funcionarios'] = Profissional.objects.all()
+        context['horariosM'] = Horarios.objects.all()[:5]
+        context['horariosT'] = Horarios.objects.all()[5:]
         return context

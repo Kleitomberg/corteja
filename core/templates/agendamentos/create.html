@@ -13,28 +13,68 @@
     {% csrf_token %}
 
     <div class="row justify-content-md-center">
-
-    
-        <div class="d-flex gap-3 text-center">
-      
+     <div class="form-group col-md-auto mb-3 text-center">
+        <div class="d-flex gap-3 text-center rolagem">      
         {% for f in funcionarios%}
     
-            <div class="bg-amber-500 ">       
-            <input name="funcionario" id="{{f.nome}}" class="text-dark" type="checkbox" placeholder="{{f.nome}}" value="{{f.id}}" >
+            <div value="{{f.id}}"  id="div_f{{f.id}}" class="bg-amber-500 d-flex  funcionarios rounded-md">       
+            <input name="funcionario" id="{{f.nome}}" class="sumiu text-dark check{{f.id}}" type="checkbox" placeholder="{{f.nome}}" value="{{f.id}}" >
+           
             {% if f.foto %}
-            <img class="img-fluid" src="{{f.foto.url}}" alt="">
-            {% else %}   
+            <div class="flex -space-x-2 overflow-hidden">
+
+            <img class="inline-block h-10 w-10 rounded-full foto-url" src="{{f.foto.url}}" alt="">
+            </div>
+            {% else %} 
+            vazio  
              {% endif %}
             <label for="{{f.nome}}">{{f.nome}}</label>
             </div>
-   
+          
         {% empty%}
         <p>Nenhum funcionario disponivel</p>
+        
         {% endfor%}
     </div>
-        
+</div>
+
    </div>
-    <div class="row justify-content-md-center">
+<!-- Horarios-->
+
+
+
+<div class="row gap-3 mb-3 p-3">
+    <p>Manhã: </p>
+    {% for h in horariosM%}
+  
+    <div class="card col-md-auto">
+        <div class="card-body text-dark">
+            
+          <span> {{h.horario}} </span>
+        </div>
+    </div>
+    {% empty%}
+    <p>Nenhum funcionario disponivel</p>
+    
+    {% endfor%}
+
+    <p>Tarde: </p>
+    {% for h in horariosT%}
+  
+    <div class="card col-md-auto">
+        <div class="card-body  text-dark">
+            <div class="">
+             {{h.horario}} 
+         </div>
+        </div>
+    </div>
+    {% empty%}
+    <p>Nenhum funcionario disponivel</p>
+    
+    {% endfor%}
+</div>
+   <!-- campos-->
+    <div class="row mt-5 justify-content-md-center">
 
     <div class="form-group col-md-4 mb-3">
         {{ form.servico|as_crispy_field }}
@@ -44,8 +84,12 @@
         {{ form.data|as_crispy_field }}
     </div>
 </div>
+
+
 <div>
-<button name="logar" value="logar" type="submit" class=" entrar group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    <div class="row mt-5 justify-content-md-center">
+        <div class="form-group col-md-4 mb-3">
+<button name="logar" value="logar" type="submit" class=" entrar group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
       <span class="absolute left-0 inset-y-0 flex items-center pl-3">
           <!-- Heroicon name: solid/lock-closed -->
           <svg class="h-6 w-6 text-white-500 group-hover:text-white-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -55,6 +99,8 @@
         Agendar
       </button>
     </div>
+    </div>
+</div>
 </form>
 </div>
 <script src="https://cdn.tailwindcss.com"></script>

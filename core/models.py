@@ -20,6 +20,7 @@ class Servicos(Base):
         return self.nome
 
 class Horarios(Base):
+    
     horario = models.TimeField('Horario')
 
     def __str__(self):        
@@ -43,3 +44,6 @@ class Agendamento(Base):
     funcionario = models.ForeignKey(Profissional,on_delete=models.PROTECT, related_name='cabelereiro')
     data = models.DateTimeField()
     cliente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Cliente')
+
+    def __str__(self):        
+       return f'{self.servico}'

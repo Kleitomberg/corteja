@@ -6,9 +6,9 @@
   }
 
 .wallpaper{
-  background-image: url(../../static/img/w3.jpg);
+ background-image: url(../../static/img/w3.jpg);
   background-size: cover;
-  height:772px;
+  height:695px;
   filter: grayscale(60%);  
   
   
@@ -17,7 +17,7 @@
 .wallpaper-cadastro{
     background-image: url(../../static/img/w1.jpg);
     background-size: cover;
-    height:772px;
+    height:695px;
     filter: grayscale(40%);  
     
     
@@ -25,7 +25,7 @@
 .wallpaper-mudarsenha{
     background-image: url(../../static/img/w2.jpg);
     background-size: cover;
-    height:772px;
+    height:695px;
     filter: grayscale(40%);  
     
     
@@ -45,7 +45,7 @@ button.entrar, button.cadastrar{
   font-size: 19px;
 }
 
-input#id_login,input#id_password, input#id_email{
+input#id_login,input#id_password1, input#id_password, input#id_email, input#id_username{
   font-size: 18px;
 }
 
@@ -70,6 +70,10 @@ h2.redefinir{
     height: 6rem !important;
 }
 
+.h-10 {
+  height: 3rem !important;
+}
+
 
 
 h2.hh2{
@@ -77,8 +81,54 @@ h2.hh2{
     margin-bottom: 45px;
 }
 
+div.funcionarios{
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  gap: 5px;
+ 
+}
+div.funcionarios:hover{
+  cursor: pointer;
+  background-color: rgb(230, 157, 105);
+}
+
+div.marcado{
+  background-color: rgb(198, 83, 0);
+}
+div.marcado:hover{
+  background-color: rgb(198, 83, 0);
+}
+
+img.foto-url{
+  
+}
+
+input[type=checkbox].sumiu{
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
 /*MOBILW*/
 @media (min-width: 200px) and (max-width: 425px) {
+  div.rolagem{
+    
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
 
   div.imagem{
     display: none;
