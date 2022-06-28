@@ -1,3 +1,6 @@
+import datetime
+from django.views.generic import ListView
+from time import time
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -33,6 +36,7 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
              data=request.POST.get('data'),
             
         )
+       
         f = request.POST.get('funcionario')
         print(f' cliquei emmm {f}')
        
@@ -42,7 +46,8 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
         agendamento.servico=Servicos.objects.get(pk=obj['servico'][0])
         agendamento.save()
         
-
+    
+     
         return HttpResponseRedirect(self.success_url)
       
       def get_context_data(self, *args, **kwargs):
@@ -55,4 +60,23 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
         context['funcionarios'] = Profissional.objects.all()
         context['horariosM'] = Horarios.objects.all()[:5]
         context['horariosT'] = Horarios.objects.all()[5:]
+        context['horariosT'] = Horarios.objects.all()[5:]
+       
+        return context
+
+
+
+class AgendaListView(ListView):
+    model = Agenda
+    template_name = 'agendamentos/create.html'    
+               
+    def get_queryset(self):
+        queryset = Agenda.objects.all()
+                      
+        return queryset
+    
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)   
+
         return context

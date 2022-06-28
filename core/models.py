@@ -20,11 +20,11 @@ class Servicos(Base):
         return self.nome
 
 class Horarios(Base):
-    
+    dia = models.DateField('Dia')
     horario = models.TimeField('Horario')
 
     def __str__(self):        
-         return f'{self.horario.hour}:{self.horario.minute}{self.horario.minute} Horas'
+         return f'Dia:{self.dia.day} as {self.horario.hour}:{self.horario.minute}{self.horario.minute} Horas'
 
 
 class Profissional(Base):
@@ -36,8 +36,10 @@ class Profissional(Base):
 
 class Agenda(Base):
     funcionario = models.ForeignKey(Profissional, on_delete=models.PROTECT)
+    horarios = models.ManyToManyField(Horarios)
    
-   
+    def __str__(self):        
+         return f'Agenda de: {self.funcionario}'
 
 class Agendamento(Base):
     servico = models.ForeignKey(Servicos,on_delete=models.PROTECT)

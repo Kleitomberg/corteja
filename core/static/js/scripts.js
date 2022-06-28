@@ -129,7 +129,7 @@ $("#div_f4").click(function(){
 });
 
 
-
+//abrir e fechar profile
 $('#user-menu-button').click(function(){
 
     if( $('#showprofile').hasClass('d-none') ){
@@ -143,7 +143,65 @@ $('#user-menu-button').click(function(){
 
 });
 
+//fechar com clique esterno
 
+$('#main').click(function(){
+
+    if( $('#showprofile').hasClass('d-block') ){
+        $('#showprofile').removeClass('d-block')
+        $('#showprofile').addClass('d-none')
+}else{
+    $('#showprofile').removeClass('d-block')
+    $('#showprofile').addClass('d-none')
+    
+}
+
+});
+
+$('#main').on('click', function (){
+    $('#showprofile').removeClass('d-block')
+    $('#showprofile').addClass('d-none')  
+     
+});
+
+$(window).on('keyup',function(event){
+    console.log('press')
+    var code = event.keyCode;
+    console.log(code)
+    if(event.keyCode==27){
+        
+        //se clicou em esq fechar menu de perfil
+        if( $('#showprofile').hasClass('d-block') ){
+                $('#showprofile').removeClass('d-block')
+                $('#showprofile').addClass('d-none')
+        }else{
+            $('#showprofile').removeClass('d-block')
+            $('#showprofile').addClass('d-none')
+            
+        }
+         //se clicou em esq fechar menu 
+         if( $('#mobile-menu').hasClass('d-block') ){
+            $('#mobile-menu').removeClass('d-block')
+            $('#mobile-menu').addClass('d-none')
+    }
+}
+});
+
+
+
+//se clicou
+
+$(document).on('click',function(event){
+
+ //se clicou em esq fechar menu de perfil
+
+    console.log("main")
+
+
+});
+
+
+//mobile
 
 $('#openmobile').click(function(){
 
