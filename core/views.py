@@ -15,8 +15,9 @@ from .forms import*
 
 
 
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
+    login_url = reverse_lazy('account_login')
 
 class CriarAgendamento(LoginRequiredMixin, CreateView):
       template_name = 'agendamentos/create.html'
@@ -61,8 +62,31 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
         context['horariosM'] = Horarios.objects.all()[:5]
         context['horariosT'] = Horarios.objects.all()[5:]
         context['horariosT'] = Horarios.objects.all()[5:]
+      
+        agenda = Agenda.objects.get(funcionario=1)        
+        horarios = agenda.horarios.all().filter(ativo=True)
+        
        
+        context['horarios'] = horarios
         return context
+
+
+
+class AgendamentoListView(ListView):
+    model = Agendamento
+    template_name = 'agendamentos/list.html'    
+               
+    def get_queryset(self):
+        queryset = Agendamento.objects.all()
+                      
+        return queryset
+    
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)   
+
+        return context
+
 
 
 

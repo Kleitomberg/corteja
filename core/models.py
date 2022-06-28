@@ -35,8 +35,8 @@ class Profissional(Base):
        return self.nome
 
 class Agenda(Base):
-    funcionario = models.ForeignKey(Profissional, on_delete=models.PROTECT)
-    horarios = models.ManyToManyField(Horarios)
+    funcionario = models.ForeignKey(Profissional, on_delete=models.PROTECT, related_name="Agendas")
+    horarios = models.ManyToManyField(Horarios,  related_name="Horarios", related_query_name="horariosx")
    
     def __str__(self):        
          return f'Agenda de: {self.funcionario}'
@@ -44,7 +44,8 @@ class Agenda(Base):
 class Agendamento(Base):
     servico = models.ForeignKey(Servicos,on_delete=models.PROTECT)
     funcionario = models.ForeignKey(Profissional,on_delete=models.PROTECT, related_name='cabelereiro')
-    data = models.DateTimeField()
+    dia = models.DateField('dia')
+    hora = models.TimeField('hora')
     cliente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Cliente')
 
     def __str__(self):        

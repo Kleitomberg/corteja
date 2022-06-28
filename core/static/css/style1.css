@@ -113,7 +113,9 @@ input[type=checkbox].sumiu{
 }
 
 
-
+div.card-body,div.card.hh{
+  background-color: transparent !important;
+}
 
 
 
