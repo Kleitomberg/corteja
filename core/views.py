@@ -74,7 +74,7 @@ class CriarAgendamento(LoginRequiredMixin, CreateView):
         context['horariosM'] = Horarios.objects.all()[:5]
         context['horariosT'] = Horarios.objects.all()[5:]
         context['horariosT'] = Horarios.objects.all()[5:]
-      
+        context['show_modal'] = True
         agenda = Agenda.objects.get(funcionario=1)        
         horarios = agenda.horarios.all().filter(ativo=True)
         
